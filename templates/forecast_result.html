@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction & Forecast Result</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    .box, .container {
+      background-color: #1e1e1e;
+      padding: 25px 30px;
+      border-radius: 10px;
+      margin: 30px auto;
+      max-width: 700px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    h1, h2, h3 {
+      color: #00bfff;
+    }
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      border: 2px solid #00bfff;
+      border-radius: 10px;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #00bfff;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .logout-btn {
+      display: inline-block;
+      margin-top: 10px;
+      color: #ff4c4c;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .logout-btn:hover {
+      color: #ff8080;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body style="background-color:#121212; color:white; font-family:Arial; text-align:center;">
+  <h2> Forecasted Crime Trend</h2>
+  <h3>{{ state }}</h3>
+  <img src="{{ plot_url }}" alt="Forecast Plot" style="width:80%; border:2px solid white; border-radius:10px;">
+  <div style="margin-top: 20px;">
+      <p><strong>Max Forecasted Crimes:</strong> {{ forecast_value }}</p>
+      <p><strong>Trend:</strong> {{ trend_description }}</p>
+      <p><strong>Forecast Year:</strong> {{ next_year }}</p>
+      <p style="color: #00ff99;"> A forecast summary has also been sent to your Gmail!</p>
+  </div>
+  <a href="/"> Back to Home</a>
+  <a href="/logout" class="logout-btn"> Logout</a>
+</body>
+</html>

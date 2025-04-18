@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crime Prediction & Forecast</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('{{ url_for("static", filename="index.jpg") }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.75);
+            width: 90%;
+            max-width: 600px;
+            margin: 5rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00bfff;
+        }
+
+        h1, h2 {
+            color: #00bfff;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 0.5rem;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        button {
+            margin-top: 2rem;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: #00bfff;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        hr {
+            margin: 3rem 0;
+            border: 1px solid #00bfff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crime Rate Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="state">State:</label>
+            <select name="state" id="state">
+                {% for s in states %}
+                    <option value="{{ s }}">{{ s }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="year">Year:</label>
+            <select name="year" id="year">
+                {% for y in years %}
+                    <option value="{{ y }}">{{ y }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="feature">Crime Feature:</label>
+            <select name="feature" id="feature">
+                {% for f in features %}
+                    <option value="{{ f }}">{{ f }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="value">Value:</label>
+            <input type="number" name="value" id="value" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <hr>
+
+        <h2>Forecast Crime Trend</h2>
+        <form action="/forecast" method="post">
+            <label for="forecast_state">State:</label>
+            <select name="forecast_state" id="forecast_state">
+                {% for s in states %}
+                    <option value="{{ s }}">{{ s }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Forecast</button>
+        </form>
+    </div>
+</body>
+</html>

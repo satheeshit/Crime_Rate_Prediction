@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction and Forecast Result</title>
+  <style>
+    body {
+      background-image: url('{{ url_for("static", filename="result.png") }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    }
+    .container {
+      background-color: rgba(30, 30, 30, 0.95);
+      padding: 30px 40px;
+      border-radius: 12px;
+      margin: 100px auto 30px; 
+      max-width: 700px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+    h2 {
+      color: #00bfff;
+      margin-bottom: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    td {
+      padding: 12px;
+      border: 1px solid #333;
+    }
+    td:first-child {
+      background-color: #00bfff;
+      color: black;
+      font-weight: bold;
+      text-align: left;
+    }
+    td:last-child {
+      text-align: right;
+    }
+    .email-note {
+      color: #00ff99;
+      font-size: 15px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #00bfff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .logout-btn {
+      display: inline-block;
+      margin-top: 10px;
+      color: #ff4c4c;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .logout-btn:hover {
+      color: #ff8080;
+      text-decoration: underline;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Prediction Result</h2>
+    <table>
+      <tr><td>State</td><td>{{ state }}</td></tr>
+      <tr><td>Year</td><td>{{ year }}</td></tr>
+      <tr><td>Crime Feature</td><td>{{ crime }}</td></tr>
+      <tr><td>Entered Value</td><td>{{ value }}</td></tr>
+      <tr><td>Predicted IPC Crimes</td><td>{{ prediction }}</td></tr>
+      <tr><td>Crime Level</td><td>{{ label }}</td></tr>
+    </table>
+    <p class="email-note">A copy of this result has also been sent to your Gmail!</p>
+    <a href="/"> Back to Home</a>
+    <a href="/logout" class="logout-btn"> Logout</a>
+
+  </div>
+</body>
+</html>
